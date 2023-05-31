@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUCURSAL</title>
+    <title>Sucursal</title>
 </head>
 <body>
     <center><H1> SELECCIONE UNA SUCURSAL </H1></center> 
 
+    <center>
+        {% for sucursal in sucursales %}
+        <p>
+            <a href="/login/{{ sucursal.empresa }}" target="_self">{{ sucursal.direccion }}</a>
+        </p>
+        {% endfor %}
+    </center>
+    
+    
 
 </body>
+

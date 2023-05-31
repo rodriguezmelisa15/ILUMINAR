@@ -30,7 +30,7 @@ class Empresas(models.Model):
 
 
 class Sucursales(models.Model):
-    sucursal = models.CharField(max_length=3)
+    sucursal = models.AutoField(primary_key=True)
     direccion = models.CharField(max_length=30)
     provincia = models.CharField(max_length=15)
     localidad = models.CharField(max_length=20)
