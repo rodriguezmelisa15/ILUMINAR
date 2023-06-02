@@ -1,23 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.template import loader
-from .models import Empresas, Sucursales
-
-
-def Empresa(request):
-    return render (request, "paginas/empresa.html")
+from .models import Empresas, Sucursales,Usuarios
+from django.contrib.auth.hashers import check_password
+from django.contrib import messages
 
 
 def Sucursal(request):
-    sucursales = Sucursales.objects.all().values()
-    context = {
-        'sucursales': sucursales,
-    }
-    return render(request, 'paginas/sucursales.html', context)
+    empresas = Empresas.objects.all()
+    sucursales = Sucursales.objects.none()  # Inicialmente, no hay sucursales seleccionadas
 
-def Usuario (request):
-    return render (request, "paginas/login.html")
+    if 'empresa' in request.GET:
+        empresa_seleccionada_id = request.GET['empresa']
+        sucursales = Sucursales.objects.filter(idemp=empresa_seleccionada_id)
 
-
+    return render(request, 'paginas/sucursales.html', {'empresas': empresas, 'sucursales': sucursales})
 
 
+
+def Usuario(request):
+    return render(request, 'paginas/login.html')
