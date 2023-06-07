@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Artículos</title>
+    <style>
+
+        .articulos-table {
+            width: 80%;
+            border-collapse: collapse;
+        }
+        .articulos-table th,
+        .articulos-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        .articulos-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <div class="articulos-container">
+        <h1>Artículos</h1>
+        <table class="articulos-table">
+            <tr>
+                <th>Artículo</th>
+                <th>Descripción</th>
+                <th>Precio 1</th>
+            </tr>
+            {% for articulo in articulos %}
+            <tr>
+                <td>{{ articulo.articulo }}</td>
+                <td>{{ articulo.descrip }}</td>
+                <td>{{ articulo.precio1 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</center>
+</body>
+</html>
