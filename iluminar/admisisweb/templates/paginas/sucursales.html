@@ -18,10 +18,49 @@
       });
     });
   </script>
-<!-- SEPARACION ENTRE CADA MENU -->
+
   <style>
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: Century Gothic;
+    background: linear-gradient(150deg, #401355, #a265be);
+    height: 100vh;
+     }
     .dropdown-container {              
-      margin-bottom: 30px;
+      margin-bottom: 50px;
+  }
+    button {
+    width: 50%;
+    height: 50px;
+    border: 1px solid;
+    background: #55226d;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+    .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    background: white;
+    border-radius: 20px;
+    font-size: 18px;
+    text-align: center;  
+  }
+    .boton-siguiente{
+    text-align: right;
+    }
+    .container h1{
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 0 20px 0;
+      border-bottom: 1px solid silver;
     }
   </style>
 </head>
@@ -34,9 +73,9 @@
   <p>Seleccione la empresa en la que se encuentra:</p>
   <div class="dropdown-container"><!-- CONTENEDOR DEL DESPLEGABLE -->
     <div class="dropdown"> <!-- BOTON DESPLEGABLE -->
-      <button class="btn btn-primary dropdown-toggle" type="button" id="empresaDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn-primary dropdown-toggle" type="button" id="empresaDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Seleccionar una opción
-      </button>
+      </button>      
       <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
         {% for empresa in empresas %}
           <li><a class="dropdown-item" href="#">{{ empresa }}</a></li>
@@ -48,7 +87,7 @@
   <p>Seleccione la sucursal en la que se encuentra:</p>
   <div class="dropdown-container">
     <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="sucursalDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn-primary dropdown-toggle" type="button" id="sucursalDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Seleccionar una opción
       </button>
       <ul class="dropdown-menu" aria-labelledby="sucursalDropdown">
@@ -58,10 +97,11 @@
       </ul>
     </div>
   </div>
-
-  <a href="{% url 'login' %}" class="btn btn-primary">Atrás</a>
-  <a href="{% url 'articulos' %}" class="btn btn-primary">Siguiente</a>
+  <div class="boton-siguiente">
+  <a href="{% url 'articulos' %}" class="btn-primary">Siguiente</a>
 </div>
+</div>
+
 
 </body>
 </html>

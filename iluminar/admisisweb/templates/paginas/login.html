@@ -9,8 +9,8 @@
         body {
     margin: 0;
     padding: 0;
-    font-family: montserrat;
-    background: linear-gradient(150deg, #401355, #9b53bd);
+    font-family: Century Gothic;
+    background: linear-gradient(150deg, #401355, #a265be);
     height: 100vh;
 }
 .formulario {
@@ -22,7 +22,7 @@
     background: white;
     border-radius: 10px;    
 }
-.formulario h2{
+.formulario h1{
     text-align: center;
     padding: 0 0 20px 0;
     border-bottom: 1px solid silver;
@@ -62,7 +62,7 @@ button[type="submit"]{
 <body>
     
     <div class="formulario">
-        <h2>Iniciar sesión</h2>
+        <h1>Iniciar sesión</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
