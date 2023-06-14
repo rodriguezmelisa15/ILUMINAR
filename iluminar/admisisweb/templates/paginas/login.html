@@ -1,77 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <title>Usuarios</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .password-toggle {
-      position: relative;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión</title>
 
-    .password-toggle input[type="password"] {
-      padding-right: 2.5rem;
-    }
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(150deg, #401355, #9b53bd);
+    height: 100vh;
+}
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: white;
+    border-radius: 10px;    
+}
+.formulario h2{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+.formulario form{
+    padding: 0 40px;
+    box-sizing: border-box; 
+}
+form .formulario{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+.formulario input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+button[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #55226d;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
 
-    .password-toggle .password-toggle-btn {
-      position: absolute;
-      top: 50%;
-      right: 0.5rem;
-      transform: translateY(-50%);
-      cursor: pointer;
-    }
-  </style>
+</style>
 </head>
 <body>
-
-<div class="container mt-3">
-  <h3>BIENVENIDOS!</h3>
     
-  <form action="/action_page.php" class="was-validated">
-    <div class="mb-3 mt-3">
-      <label for="uname" class="form-label">Usuario:</label>
-      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-      <div class="valid-feedback"></div>
-      <div class="invalid-feedback">Complete con su nombre de usuario</div>
-    </div>
-    <div class="mb-3">
-      <label for="pwd" class="form-label">Contraseña:</label>
-      <div class="input-group">
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-        <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">
-          <i class="bi bi-eye"></i>
-        </button>
-      </div>
-      <div class="valid-feedback"></div>
-      <div class="invalid-feedback">Ingrese su contraseña</div>
+    <div class="formulario">
+        <h2>Iniciar sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Iniciar sesión</button>
+        </form>
     </div>
     
-    <script>
-      document.getElementById("showPasswordButton").addEventListener("click", function() {
-        var passwordInput = document.getElementById("pwd");
-        var showPasswordButton = document.getElementById("showPasswordButton");
-        
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          showPasswordButton.innerHTML = '<i class="bi bi-eye-slash"></i>';
-        } else {
-          passwordInput.type = "password";
-          showPasswordButton.innerHTML = '<i class="bi bi-eye"></i>';
-        }
-      });
-    </script>
-  
-  <a class="boton" href="{% url 'empresas' %}" target="_self">Iniciar sesion</a>
-  </form>
-</div>
-
-<style>
-  #showPasswordCheckbox:checked ~ .password-toggle-btn i::before {
-    content: "\f070";
-  }
-</style>
-
 </body>
 </html>
-
